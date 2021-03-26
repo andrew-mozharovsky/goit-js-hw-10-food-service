@@ -5,16 +5,19 @@ const themeColor = {
   LIGHT: 'light-theme',
 };
 
+const changeBodyClass = (addClass, removeClass) => {
+  refs.documentThem.classList.remove(removeClass);
+  refs.documentThem.classList.add(addClass);
+  localStorage.setItem('themColor', addClass);
+}
+
 const changeCheme = () => {
   if (refs.documentThem.classList.contains(themeColor.DARK)) {
-    refs.documentThem.classList.remove(themeColor.DARK);
-    refs.documentThem.classList.add(themeColor.LIGHT);
-    localStorage.setItem('themColor', themeColor.LIGHT);
+    changeBodyClass(themeColor.LIGHT, themeColor.DARK)   
   } else {
-    refs.documentThem.classList.remove(themeColor.LIGHT);
-    refs.documentThem.classList.add(themeColor.DARK);
-    localStorage.setItem('themColor', themeColor.DARK);
+    changeBodyClass(themeColor.DARK, themeColor.LIGHT)    
   }
 };
+
 
 export { changeCheme };
